@@ -7,9 +7,26 @@
 
 import SwiftUI
 
+// DAY 33 SHOWING AND HIDING VIEWS WITH TRANSITIONS
 struct Day33_showing_HidingViewsWithTransitions: View {
+    
+    @State private var isShowingReD = false
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Button ("Tap Me") {
+                withAnimation {
+                    isShowingReD.toggle()
+                }
+                
+            }
+            if isShowingReD {
+                Rectangle()
+                    .fill(.red)
+                    .frame(width: 200, height: 200)
+                    .transition(.asymmetric(insertion: .scale, removal: .opacity))
+            }
+        }
     }
 }
 
